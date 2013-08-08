@@ -192,12 +192,23 @@ public class TestChaosMonkeyContext extends TestMonkeyContext implements ChaosMo
         return terminated;
     }
 
+    private final List<String> stopped = new LinkedList<String>();
+
+    public List<String> stopped() {
+        return stopped;
+    }
+
     @Override
     public CloudClient cloudClient() {
         return new CloudClient() {
             @Override
             public void terminateInstance(String instanceId) {
                 terminated.add(instanceId);
+            }
+
+            @Override
+            public void stopInstance(String instanceId) {
+                stopped.add(instanceId);
             }
 
             @Override
