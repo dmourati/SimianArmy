@@ -110,6 +110,10 @@ public class TestMonkeyContext implements Monkey.Context {
             }
 
             @Override
+            public void stopInstance(String instanceId) {
+            }
+
+            @Override
             public void createTagsForResources(Map<String, String> keyValueMap, String... resourceIds) {
             }
 
