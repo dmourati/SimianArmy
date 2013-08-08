@@ -38,6 +38,8 @@ public abstract class JanitorMonkey extends Monkey {
     public static final String INSTANCE_TAG_KEY = "instance";
     /** The key name of the tag detach time used to tag resources. */
     public static final String DETACH_TIME_TAG_KEY = "detachTime";
+    /** The key name of the Cleanup tag used to tag resources. */
+    public static final String CLEANUP_TAG = "cleanup";
 
     /**
      * The Interface Context.
