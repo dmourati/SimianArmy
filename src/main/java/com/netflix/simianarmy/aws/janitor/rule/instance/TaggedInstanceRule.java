@@ -71,7 +71,8 @@ public class TaggedInstanceRule implements Rule {
                 LOGGER.info(String.format("The instance %s is not tagged for cleanup handled by Janitor.", resource.getId()));
                 return true;
             }
-        } else
+        } else{
             return true;
+        }
     }
 }
