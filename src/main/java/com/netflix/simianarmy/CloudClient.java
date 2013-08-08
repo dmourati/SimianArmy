@@ -39,6 +39,18 @@ public interface CloudClient {
     void terminateInstance(String instanceId);
 
     /**
+     * Stops instance.
+     *
+     * @param instanceId
+     *            the instance id
+     *
+     * @throws NotFoundException
+     *             if the instance no longer exists or was already terminated after the crawler discovered it then you
+     *             should get a NotFoundException
+     */
+    void stopInstance(String instanceId);
+
+    /**
      * Deletes an auto scaling group.
      *
      * @param asgName
