@@ -25,6 +25,7 @@ import com.amazonaws.services.autoscaling.model.DescribeAutoScalingGroupsResult;
 import com.amazonaws.services.autoscaling.model.Instance;
 import com.amazonaws.services.ec2.AmazonEC2;
 import com.amazonaws.services.ec2.model.TerminateInstancesRequest;
+import com.amazonaws.services.ec2.model.StopInstancesRequest;
 import org.mockito.ArgumentCaptor;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -78,6 +79,20 @@ public class TestAWSClient extends AWSClient {
         this.terminateInstance("fake:i-123456789");
 
         verify(ec2Mock).terminateInstances(arg.capture());
+
+        List<String> instances = arg.getValue().getInstanceIds();
+        Assert.assertEquals(instances.size(), 1);
+        Assert.assertEquals(instances.get(0), "fake:i-123456789");
+    }
+
+    @Test
+    public void testStopInstance() {
+
+        ArgumentCaptor<StopInstancesRequest> arg = ArgumentCaptor.forClass(StopInstancesRequest.class);
+
+        this.stopInstance("fake:i-123456789");
+
+        verify(ec2Mock).stopInstances(arg.capture());
 
         List<String> instances = arg.getValue().getInstanceIds();
         Assert.assertEquals(instances.size(), 1);
