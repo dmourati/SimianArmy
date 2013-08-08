@@ -56,6 +56,7 @@ public interface CloudClient {
      * @param asgName
      *          the auto scaling group name
      */
+
     void deleteAutoScalingGroup(String asgName);
 
     /**
